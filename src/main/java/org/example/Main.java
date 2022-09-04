@@ -3,13 +3,14 @@ package org.example;
 import java.util.concurrent.Exchanger;
 
 public class Main {
-    public static void main(String[] args) {
+    public static <StopWatch> void main(String[] args) throws InterruptedException {
         /*  Задание 1
 При старте приложения запускаются три потока. Первый поток заполняет массив случайными числами.
 Два других потока ожидают заполнения. Когда массив заполнен оба потока запускаются.
 Первый поток находит сумму элементов массива, второй поток среднеарифметическое значение в массиве.
 Полученный массив, сумма и среднеарифметическое возвращаются в метод main, где должны быть отображены
 */
+        long start = System.nanoTime();
 
         Array arr=new Array(100);
 
@@ -35,6 +36,9 @@ public class Main {
 
         System.out.println("---------------------------------");
 
-
+        //Thread.sleep(1000);
+        long finish = System.nanoTime();
+        long elapsed = finish - start;
+        System.out.println("Прошло времени, мс: " + elapsed / 1000000);
     }
 }
